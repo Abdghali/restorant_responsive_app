@@ -222,32 +222,37 @@ class FoodItemsService {
     }
   }
 
+  clearCart() async {
+    try {
+      QuerySnapshot<Map<String, dynamic>> value =
+          await firestore.collection('CartFoodItems').get();
+      value.docs.forEach((element) {
+        firestore.collection('CartFoodItems').doc(element.id).delete();
+      });
+    } catch (e) {
+      throw DBException('CartFoodItems db Exception');
+    }
+  }
+
   setOrder(MyOrder order) async {
     try {
       await firestore
           .collection('Orders')
           .doc()
           .set(order.toJson())
-          .then((value) => AwesomeDialog(
-                context: Get.context!,
-                dialogType: DialogType.success,
-                animType: AnimType.rightSlide,
-                title: 'Order',
-                desc: 'Order submitted successfully',
-                btnCancelOnPress: () {},
-                btnOkOnPress: () {},
-              )..show())
-          .catchError((e) => logger.e(e));
+          .then((value) {
+        clearCart();
+        AwesomeDialog(
+          context: Get.context!,
+          dialogType: DialogType.success,
+          animType: AnimType.rightSlide,
+          title: 'Order',
+          desc: 'Order submitted successfully',
+          btnCancelOnPress: () {},
+          btnOkOnPress: () {},
+        )..show();
+      }).catchError((e) => logger.e(e));
     } catch (e) {
-      AwesomeDialog(
-        context: Get.context!,
-        dialogType: DialogType.error,
-        animType: AnimType.rightSlide,
-        title: 'Order',
-        desc: 'Order submitted Faild',
-        btnCancelOnPress: () {},
-        btnOkOnPress: () {},
-      )..show();
       throw DBException('setOrder db Exception');
     }
   }
