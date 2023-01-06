@@ -34,25 +34,46 @@ class HomeTabletPage extends StatelessWidget {
                 margin: const EdgeInsets.all(10),
                 width: double.infinity,
                 height: ScreenUtil().screenHeight,
-                child: Obx(
-                  () => Visibility(
-                    replacement: const EmptyList(),
-                    visible: homePageController.listOfFoodItem.length > 0,
-                    child: GridView.builder(
-                      itemCount: homePageController.listOfFoodItem.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3),
-                      itemBuilder: (context, index) {
-                        return MyBox(
-                          child: FoodItemCard(
-                            foodItem: homePageController.listOfFoodItem[index],
+                child: Obx(() => Column(
+                      children: [
+                        Expanded(
+                            flex: 1,
+                            child: Center(
+                              child: homePageController.buildSearchField(),
+                            )),
+                        Expanded(
+                          flex: 10,
+                          child: Visibility(
+                            replacement: const EmptyList(),
+                            visible: homePageController.isSearching.value
+                                ? homePageController
+                                    .searchListOfFoodItem.isNotEmpty
+                                : homePageController.listOfFoodItem.isNotEmpty,
+                            child: GridView.builder(
+                              itemCount: homePageController.isSearching.value
+                                  ? homePageController
+                                      .searchListOfFoodItem.length
+                                  : homePageController.listOfFoodItem.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3),
+                              itemBuilder: (context, index) {
+                                return MyBox(
+                                  child: FoodItemCard(
+                                    foodItem:
+                                        homePageController.isSearching.value
+                                            ? homePageController
+                                                .searchListOfFoodItem[index]
+                                            : homePageController
+                                                .listOfFoodItem[index],
+                                  ),
+                                );
+                              },
+                            ),
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
+                        ),
+                      ],
+                    )),
               ),
             ),
 

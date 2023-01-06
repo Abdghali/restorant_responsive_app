@@ -27,23 +27,45 @@ class FavouriteMobilePage extends StatelessWidget {
             // list of previous days
             Expanded(
               child: Obx(
-                () => Visibility(
-                  visible:
-                      favoritePageController.listOfFavoriteFoodItem.length > 0,
-                  replacement: EmptyList(),
-                  child: ListView.builder(
-                    itemCount:
-                        favoritePageController.listOfFavoriteFoodItem.length,
-                    itemBuilder: (context, index) {
-                      return MyTile(
-                        child: FavouriteRowItem(
-                          foodItem: favoritePageController
-                              .listOfFavoriteFoodItem[index],
-                          favoritePageController: favoritePageController,
+                () => Column(
+                  children: [
+                    Expanded(
+                        flex: 1,
+                        child: Center(
+                          child: favoritePageController.buildSearchField(),
+                        )),
+                    Expanded(
+                      flex: 10,
+                      child: Visibility(
+                        replacement: EmptyList(),
+                        visible: favoritePageController.isSearching.value
+                            ? favoritePageController
+                                .searchListOfFavorite.isNotEmpty
+                            : favoritePageController
+                                .listOfFavoriteFoodItem.isNotEmpty,
+                        child: ListView.builder(
+                          itemCount: favoritePageController.isSearching.value
+                              ? favoritePageController
+                                  .searchListOfFavorite.length
+                              : favoritePageController
+                                  .listOfFavoriteFoodItem.length,
+                          itemBuilder: (context, index) {
+                            return MyTile(
+                              child: FavouriteRowItem(
+                                foodItem:
+                                    favoritePageController.isSearching.value
+                                        ? favoritePageController
+                                            .searchListOfFavorite[index]
+                                        : favoritePageController
+                                            .listOfFavoriteFoodItem[index],
+                                favoritePageController: favoritePageController,
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

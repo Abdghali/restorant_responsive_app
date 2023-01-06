@@ -96,8 +96,7 @@ class FavoritePageController extends BaseController {
 
   Widget buildSearchField() {
     return Container(
-      width: 120.w,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         gradient: LinearGradient(
