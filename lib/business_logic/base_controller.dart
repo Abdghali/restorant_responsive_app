@@ -31,4 +31,8 @@ class BaseController extends GetxController {
     clearSearch();
     isSearching.value = false;
   }
+
+  void startSearch() {
+    isSearching.value = true;
+  }
 }

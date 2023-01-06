@@ -20,52 +20,10 @@ class HomeDesktopPage extends StatelessWidget {
   HomeDesktopPage({Key? key, required this.homePageController})
       : super(key: key);
 
-// // build appBar action
-//   List<Widget> buildAppBarActions() {
-//     if (homePageController.isSearching.value) {
-//       return [
-//         IconButton(
-//           onPressed: () {
-//             homePageController.isSearching.value = true;
-
-//             //  homePageController.clearSearch();
-//             Logger().e(homePageController.isSearching.value);
-//             Get.back();
-//           },
-//           icon: Icon(Icons.clear, color: MyAppColors.myGrey),
-//         ),
-//       ];
-//     } else {
-//       return [
-//         IconButton(
-//           onPressed: () {
-//             homePageController.isSearching.value = true;
-//           },
-//           icon: Icon(
-//             Icons.search,
-//             color: MyAppColors.myGrey,
-//           ),
-//         ),
-//       ];
-//     }
-//   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyAppColors.backgroundColor,
-      // appBar: AppBar(
-      //   // backgroundColor: MyAppColors.myYallow,
-      //   // leading: homePageController.isSearching.value
-      //   //     ? BackButton(
-      //   //         color: MyAppColors.myGrey,
-      //   //       )
-      //   //     : Container(),
-      //   title: homePageController.isSearching.value
-      //       ? homePageController.buildSearchField()
-      //       : homePageController.buildAppBarTitle(),
-      //   actions: buildAppBarActions(),
-      // ),
       body: Padding(
         padding: EdgeInsets.only(top: 30.h),
         child: Row(
@@ -80,23 +38,45 @@ class HomeDesktopPage extends StatelessWidget {
                 margin: const EdgeInsets.all(10),
                 width: double.infinity,
                 height: ScreenUtil().screenHeight,
-                child: Obx(() => Visibility(
-                      replacement: const EmptyList(),
-                      visible: homePageController.listOfFoodItem.length > 0,
-                      child: GridView.builder(
-                        itemCount: homePageController.listOfFoodItem.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3),
-                        itemBuilder: (context, index) {
-                          return MyBox(
-                            child: FoodItemCard(
-                              foodItem:
-                                  homePageController.listOfFoodItem[index],
+                child: Obx(() => Column(
+                      children: [
+                        Expanded(
+                            flex: 1,
+                            child: Center(
+                              child: homePageController.buildSearchField(),
+                            )),
+                        Expanded(
+                          flex: 10,
+                          child: Visibility(
+                            replacement: const EmptyList(),
+                            visible: homePageController.isSearching.value
+                                ? homePageController
+                                    .searchListOfFoodItem.isNotEmpty
+                                : homePageController.listOfFoodItem.isNotEmpty,
+                            child: GridView.builder(
+                              itemCount: homePageController.isSearching.value
+                                  ? homePageController
+                                      .searchListOfFoodItem.length
+                                  : homePageController.listOfFoodItem.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3),
+                              itemBuilder: (context, index) {
+                                return MyBox(
+                                  child: FoodItemCard(
+                                    foodItem:
+                                        homePageController.isSearching.value
+                                            ? homePageController
+                                                .searchListOfFoodItem[index]
+                                            : homePageController
+                                                .listOfFoodItem[index],
+                                  ),
+                                );
+                              },
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        ),
+                      ],
                     )),
               ),
             ),
