@@ -6,6 +6,8 @@ import 'package:logger/logger.dart';
 import 'package:restaurant_app/data/models/food_item.dart';
 import 'package:restaurant_app/data/models/order.dart';
 
+import '../../exceptions/db_exception.dart';
+
 class FoodItemsService {
   FoodItemsService._();
   static final FoodItemsService _foodItemsService = FoodItemsService._();
@@ -48,24 +50,9 @@ class FoodItemsService {
         msg: 'Somthing wrong',
         gravity: ToastGravity.BOTTOM,
       );
+      throw DBException('storeFoodItem db Exception');
     }
   }
-
-  // Future<Bool>? checkIfFoodItemFounded(int foodItemId) async {
-  //   try {
-  //     await firestore
-  //         .collection('FoodItems')
-  //         .where("id", isEqualTo: foodItemId)
-  //         .get()
-  //         .then((value) {
-  //       print("value : $value");
-  //       return true;
-  //     }).catchError((e) => print(e));
-  //   } catch (e) {
-  //      return null;
-  //   }
-
-  // }
 
 //  get All Favorite FoodItem()
 
@@ -116,6 +103,7 @@ class FoodItemsService {
         msg: 'Somthing wrong',
         gravity: ToastGravity.BOTTOM,
       );
+      throw DBException('setFoodItemToFavorite db Exception');
     }
   }
 
@@ -139,6 +127,7 @@ class FoodItemsService {
         msg: 'Somthing wrong',
         gravity: ToastGravity.BOTTOM,
       );
+      throw DBException('deleteFoodItemFromFavorite db Exception');
     }
   }
 
@@ -206,6 +195,7 @@ class FoodItemsService {
         msg: 'Somthing wrong...',
         gravity: ToastGravity.BOTTOM,
       );
+      throw DBException('setFoodItemtoCart db Exception');
     }
   }
 
@@ -228,6 +218,7 @@ class FoodItemsService {
         msg: 'Somthing wrong',
         gravity: ToastGravity.BOTTOM,
       );
+      throw DBException('CartFoodItems db Exception');
     }
   }
 
@@ -257,6 +248,7 @@ class FoodItemsService {
         btnCancelOnPress: () {},
         btnOkOnPress: () {},
       )..show();
+      throw DBException('setOrder db Exception');
     }
   }
 }
