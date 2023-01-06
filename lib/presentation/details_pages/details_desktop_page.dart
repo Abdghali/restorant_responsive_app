@@ -51,7 +51,7 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                AutoSizeText("Price",
+                                AutoSizeText("price".tr,
                                     style: MyAppStyle.boldTitleTextStyle
                                         .copyWith(fontSize: 80.sp)),
                                 AutoSizeText("${foodItem.price.toString()}}\$",
@@ -60,7 +60,7 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                                 SizedBox(
                                   height: 40.h,
                                 ),
-                                AutoSizeText("Quantity",
+                                AutoSizeText("quantity".tr,
                                     style: MyAppStyle.boldTitleTextStyle
                                         .copyWith(fontSize: 80.sp)),
                                 CounterWidget(
@@ -78,13 +78,13 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                           SizedBox(
                             height: 30.h,
                           ),
-                          AutoSizeText("Food Name",
+                          AutoSizeText("food_name".tr,
                               style: MyAppStyle.boldTitleTextStyle
                                   .copyWith(fontWeight: FontWeight.w800)),
                           SizedBox(
                             height: 10.h,
                           ),
-                          AutoSizeText("Description",
+                          AutoSizeText("description".tr,
                               style: MyAppStyle.boldTitleTextStyle.copyWith(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16.sp)),
@@ -116,8 +116,8 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                       Icons.add_shopping_cart_outlined,
                       color: MyAppColors.PrimaryColor,
                     ),
-                    label: const Text(
-                      'Abb to Cart',
+                    label: Text(
+                      'add_to_cart'.tr,
                       style: TextStyle(color: MyAppColors.PrimaryColor),
                     ),
                     style: OutlinedButton.styleFrom(
@@ -145,8 +145,8 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                       Icons.favorite_border_outlined,
                       color: MyAppColors.PrimaryColor,
                     ),
-                    label: const Text(
-                      'Abb to Favotits',
+                    label: Text(
+                      'add_to_favotits'.tr,
                       style: TextStyle(color: MyAppColors.PrimaryColor),
                     ),
                   ),

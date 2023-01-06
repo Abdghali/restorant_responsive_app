@@ -23,15 +23,11 @@ class FavoritePageController extends BaseController {
     loading.value = true;
     listOfFavoriteFoodItem.value =
         (await foodItemsRepository.getAllFavoriteFoodItem());
-    Logger().e(
-        'listOfQueryQSFavoriteFoodItem.value : ${listOfFavoriteFoodItem.value.length}');
     loading.value = false;
   }
 
   setFoodItemToFavorite(FoodItem foodItem) async {
     await foodItemsRepository.setFoodItemToFavorite(foodItem);
-    Logger().e("added : ${foodItem.toJson()}");
-    // TODO show flitter toast
   }
 
   deleteFoodItemFromFavorite(int id) async {

@@ -11,7 +11,7 @@ double tax = 0.10;
 
 Widget _buildAppBarTitle() {
   return Text(
-    'Characters',
+    'food_menu'.tr,
     style: TextStyle(color: MyAppColors.myGrey),
   );
 }
@@ -89,7 +89,7 @@ var myDrawer = Drawer(
             Get.to(HomePage());
           }),
           title: Text(
-            'H o m e',
+            'home'.tr,
             style: MyAppStyle.drawerTextColor,
           ),
         ),
@@ -103,7 +103,7 @@ var myDrawer = Drawer(
           ),
           onTap: (() => Get.to(FavouritePage())),
           title: Text(
-            'F A V O R I T E',
+            'favorite'.tr,
             style: MyAppStyle.drawerTextColor,
           ),
         ),
@@ -117,7 +117,7 @@ var myDrawer = Drawer(
           ),
           onTap: (() => Get.to(CartPage())),
           title: Text(
-            'C A R T',
+            'cart'.tr,
             style: MyAppStyle.drawerTextColor,
           ),
         ),

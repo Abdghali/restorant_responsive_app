@@ -54,6 +54,7 @@ class HomePageController extends BaseController {
 
   Widget searchField() {
     return TextField(
+      key: const Key('searchTextField'),
       controller: searchTextController.value,
       cursorColor: MyAppColors.myGrey,
       decoration: InputDecoration(
