@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:restaurant_app/presentation/cart_pages/widgets/%20price_summary_widget.dart';
 
 import '../../business_logic/cart_page_controller.dart';
@@ -70,6 +71,10 @@ class CartDesktopPage extends StatelessWidget {
                       child: PriceSummaryMobile_widget(
                           topBorderRadius: false,
                           callback: () {
+                            Logger().e(
+                                'subTotal : ${cartPageController.subTotalPrice.value}');
+                            Logger().e(
+                                'total : ${cartPageController.totalPrice.value}');
                             Get.to(AddressPage());
                           },
                           buttonTitle: 'Next',

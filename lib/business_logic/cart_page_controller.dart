@@ -39,7 +39,7 @@ class CartPageController extends BaseController {
   calculatePrice() {
     subTotalPrice.value = 0.0;
     listOfCartFoodItems.value.forEach((foodItem) {
-      subTotalPrice.value += foodItem.price ?? 0;
+      subTotalPrice.value += (foodItem.price ?? 1 * foodItem.quantity! ?? 1);
     });
     totalPrice.value = subTotalPrice.value + tax;
   }

@@ -14,11 +14,7 @@ class AppBinding implements Bindings {
         HomePageController()); // different instances for different list items
     Get.create<FavoritePageController>(() =>
         FavoritePageController()); // different instances for different list items
-    Get.create<CartPageController>(
-      () => CartPageController(),
-    ); // different instances for different list items
 
-    // Get.put<CounterController>(CounterController(),
-    //     tag: 'counter'); // seperate instance to display total
+    Get.put<CartPageController>(CartPageController(), permanent: true);
   }
 }

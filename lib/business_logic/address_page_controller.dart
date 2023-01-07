@@ -17,7 +17,6 @@ class AddressPageController extends BaseController {
 
   MyOrder order =
       MyOrder(address: Address(), contactInfo: ContactInfo(), totalPrice: 0.0);
-  CartPageController cartControoler = Get.put(CartPageController());
 
 // set contact info
   setName(String name) {
@@ -56,10 +55,13 @@ class AddressPageController extends BaseController {
 
   @override
   void onInit() {
+    super.onInit();
+    CartPageController cartControoler = Get.find<CartPageController>();
+
     order.cartFoodItems = cartControoler.listOfCartFoodItems;
     order.tax = tax;
     order.totalPrice = cartControoler.totalPrice.value;
     order.subtotal = cartControoler.subTotalPrice.value;
-    super.onInit();
+    Logger().e(order.toJson());
   }
 }
