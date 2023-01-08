@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_app/business_logic/bindings/app_bindings.dart';
 import 'firebase_options.dart';
 import 'presentation/home/home_page.dart';
+import 'splash_pages/splash_page.dart';
 import 'utility/my_app_color.dart';
 import 'utility/translations.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: MyAppColors.backgroundColor,
               primaryColor: MyAppColors.PrimaryColor,
             ),
-            home: HomePage(),
+            home: SplashPage(),
             initialBinding: AppBinding());
       },
     );

@@ -16,6 +16,7 @@ class AppTranslations extends Translations {
           'home': 'H o m e',
           'favorite': 'F A V O R I T E',
           'cart': 'C A R T',
+          'qa_restorant': 'QA Restorant',
         },
       };
 }
