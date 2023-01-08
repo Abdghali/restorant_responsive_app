@@ -14,11 +14,13 @@ import '../widgets/counter.dart';
 class FoodDetailsMobilePage extends StatelessWidget {
   final FoodItem foodItem;
   final String previousRouteName;
-  FoodDetailsMobilePage({
-    Key? key,
-    required this.foodItem,
-    required this.previousRouteName,
-  }) : super(key: key);
+  DetailsPageController detailsPageController;
+  FoodDetailsMobilePage(
+      {Key? key,
+      required this.foodItem,
+      required this.previousRouteName,
+      required this.detailsPageController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

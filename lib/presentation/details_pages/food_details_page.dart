@@ -17,19 +17,23 @@ class FoodDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DetailsPageController detailsPageController =
+        Get.put(DetailsPageController());
+    detailsPageController.updateFoodItem(foodItem);
+    detailsPageController.onInit();
     return ResponsiveLayout(
       mobileBody: FoodDetailsMobilePage(
-        foodItem: foodItem,
-        previousRouteName: previousRouteName,
-      ),
+          foodItem: foodItem,
+          previousRouteName: previousRouteName,
+          detailsPageController: detailsPageController),
       tabletBody: FoodDetailsTabletPage(
         foodItem: foodItem,
         previousRouteName: previousRouteName,
       ),
       desktopBody: FoodDetailsDesktopPage(
-        foodItem: foodItem,
-        previousRouteName: previousRouteName,
-      ),
+          foodItem: foodItem,
+          previousRouteName: previousRouteName,
+          detailsPageController: detailsPageController),
     );
   }
 }
