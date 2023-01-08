@@ -18,14 +18,10 @@ import '../widgets/image_container.dart';
 
 class FoodDetailsDesktopPage extends StatelessWidget {
   final FoodItem foodItem;
-  final String previousRouteName;
   DetailsPageController detailsPageController;
 
   FoodDetailsDesktopPage(
-      {Key? key,
-      required this.foodItem,
-      required this.previousRouteName,
-      required this.detailsPageController})
+      {Key? key, required this.foodItem, required this.detailsPageController})
       : super(key: key);
 
   CartPageController cartPageController = Get.find();
@@ -125,7 +121,6 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                           onPressed: () async {
                             detailsPageController
                                 .setCartItem(counterController.counter.value);
-                            Logger().e(previousRouteName);
                           },
                           icon: const Icon(
                             Icons.add_shopping_cart_outlined,

@@ -23,17 +23,13 @@ class FoodDetailsPage extends StatelessWidget {
     detailsPageController.onInit();
     return ResponsiveLayout(
       mobileBody: FoodDetailsMobilePage(
-          foodItem: foodItem,
-          previousRouteName: previousRouteName,
-          detailsPageController: detailsPageController),
+          foodItem: foodItem, detailsPageController: detailsPageController),
       tabletBody: FoodDetailsTabletPage(
         foodItem: foodItem,
-        previousRouteName: previousRouteName,
+        detailsPageController: detailsPageController,
       ),
       desktopBody: FoodDetailsDesktopPage(
-          foodItem: foodItem,
-          previousRouteName: previousRouteName,
-          detailsPageController: detailsPageController),
+          foodItem: foodItem, detailsPageController: detailsPageController),
     );
   }
 }
