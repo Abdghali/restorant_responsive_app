@@ -5,6 +5,7 @@ import '../../business_logic/favorite_page_controller.dart';
 import '../../data/services/food_services.dart';
 import '../../utility/constants.dart';
 import '../../utility/my_app_color.dart';
+import '../widgets/my_drawer_widget.dart';
 import '../widgets/my_tile.dart';
 import '../widgets/image_container.dart';
 import '../widgets/slider.dart';
@@ -26,7 +27,7 @@ class FavouriteDesktopPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // open drawer
-            myDrawer,
+            MyDrawerWidget(),
 
             // first half of page
             Expanded(

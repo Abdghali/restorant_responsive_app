@@ -1,6 +1,6 @@
 import '../models/food_item.dart';
 
-List<FoodItem> foodItems = [
+List<FoodItem> foodItemfoodItems = [
   FoodItem(
       id: 1,
       imageUrl:

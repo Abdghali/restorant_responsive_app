@@ -26,6 +26,7 @@ class FoodItemCard extends StatelessWidget {
         onTap: () {
           Get.to(FoodDetailsPage(
             foodItem: foodItem,
+            previousRouteName: Get.currentRoute,
           ));
         },
         child: Container(

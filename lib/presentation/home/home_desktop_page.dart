@@ -12,6 +12,7 @@ import '../../utility/constants.dart';
 import '../../utility/my_app_color.dart';
 import '../widgets/empty_list.dart';
 import '../widgets/my_box.dart';
+import '../widgets/my_drawer_widget.dart';
 import '../widgets/my_tile.dart';
 
 class HomeDesktopPage extends StatelessWidget {
@@ -30,7 +31,7 @@ class HomeDesktopPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // open drawer
-            myDrawer,
+            MyDrawerWidget(),
             // first half of page
             Expanded(
               flex: 2,

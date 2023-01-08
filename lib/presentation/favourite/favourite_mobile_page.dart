@@ -5,6 +5,7 @@ import 'package:restaurant_app/presentation/widgets/empty_list.dart';
 import '../../business_logic/favorite_page_controller.dart';
 import '../../utility/constants.dart';
 import '../../utility/my_app_color.dart';
+import '../widgets/my_drawer_widget.dart';
 import '../widgets/my_tile.dart';
 
 class FavouriteMobilePage extends StatelessWidget {
@@ -17,7 +18,7 @@ class FavouriteMobilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyAppColors.backgroundColor,
       appBar: myAppBar,
-      drawer: myDrawer,
+      drawer: MyDrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

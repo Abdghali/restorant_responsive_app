@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:restaurant_app/business_logic/counter_getx_controller.dart';
 import 'package:restaurant_app/data/services/food_services.dart';
 import 'package:restaurant_app/utility/my_app_color.dart';
 import 'package:restaurant_app/utility/my_app_style.dart';
 
 import '../../business_logic/cart_page_controller.dart';
+import '../../business_logic/details_page_controller.dart';
 import '../../business_logic/favorite_page_controller.dart';
 import '../../data/models/food_item.dart';
 import '../widgets/counter.dart';
@@ -16,9 +18,12 @@ import '../widgets/image_container.dart';
 
 class FoodDetailsDesktopPage extends StatelessWidget {
   final FoodItem foodItem;
-  FoodDetailsDesktopPage({Key? key, required this.foodItem}) : super(key: key);
-  CounterController counterController = Get.find();
+  final String previousRouteName;
+  FoodDetailsDesktopPage(
+      {Key? key, required this.foodItem, required this.previousRouteName})
+      : super(key: key);
   CartPageController cartPageController = Get.find();
+  CounterController counterController = Get.find();
   FavoritePageController favoritePageController = Get.find();
 
   @override
@@ -54,7 +59,7 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                                 AutoSizeText("price".tr,
                                     style: MyAppStyle.boldTitleTextStyle
                                         .copyWith(fontSize: 80.sp)),
-                                AutoSizeText("${foodItem.price.toString()}}\$",
+                                AutoSizeText("${foodItem.price.toString()}\$",
                                     style: MyAppStyle.priceTextStyle
                                         .copyWith(fontSize: 30.sp)),
                                 SizedBox(
@@ -111,6 +116,7 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                       foodItem.quantity = counterController
                           .counter.value; // update the quantity
                       await cartPageController.setFoodItemtoCart(foodItem);
+                      Logger().e(previousRouteName);
                     },
                     icon: const Icon(
                       Icons.add_shopping_cart_outlined,

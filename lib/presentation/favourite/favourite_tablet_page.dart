@@ -8,6 +8,7 @@ import '../../data/services/food_services.dart';
 import '../../utility/constants.dart';
 import '../../utility/my_app_color.dart';
 import '../widgets/empty_list.dart';
+import '../widgets/my_drawer_widget.dart';
 import '../widgets/my_tile.dart';
 
 class FavouriteTabletPage extends StatelessWidget {
@@ -20,7 +21,7 @@ class FavouriteTabletPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyAppColors.backgroundColor,
       appBar: myAppBar,
-      drawer: myDrawer,
+      drawer: MyDrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

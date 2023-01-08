@@ -30,6 +30,10 @@ class FavoritePageController extends BaseController {
     await foodItemsRepository.setFoodItemToFavorite(foodItem);
   }
 
+  updateFoodItemToFavorite(FoodItem foodItem) async {
+    await foodItemsRepository.updateFoodItemToFavorite(foodItem);
+  }
+
   deleteFoodItemFromFavorite(int id) async {
     await foodItemsRepository
         .deleteFoodItemFromFavorite(id); // delete food item by id

@@ -131,7 +131,21 @@ class FoodItemsService {
     }
   }
 
-//  get All Favorite FoodItem()
+// update Favorite food Item
+  updateFavoriteFoodItem(FoodItem foodItem) async {
+    await firestore
+        .collection('FavoriteFoodItems')
+        .doc(foodItem.id.toString())
+        .update(foodItem.toJson())
+        .then((value) => Fluttertoast.showToast(
+              msg: 'Item updated sucessfully',
+              gravity: ToastGravity.BOTTOM,
+            ))
+        .catchError((e) =>
+            throw DBException('updateFavoriteFoodItem db Exception : $e'));
+  }
+
+//  get All cart FoodItem()
 
   Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>?>
       getAllCartFoodItems() async {
@@ -197,6 +211,20 @@ class FoodItemsService {
       );
       throw DBException('setFoodItemtoCart db Exception');
     }
+  }
+
+// update Cart FoodItem
+  updateCartFoodItem(FoodItem foodItem) async {
+    await firestore
+        .collection('CartFoodItems')
+        .doc(foodItem.id.toString())
+        .update(foodItem.toJson())
+        .then((value) => Fluttertoast.showToast(
+              msg: 'Item updated sucessfully',
+              gravity: ToastGravity.BOTTOM,
+            ))
+        .catchError(
+            (e) => throw DBException('updateCartFoodItem db Exception : $e'));
   }
 
   deleteFoodItemFromCart(int id) async {

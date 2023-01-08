@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'my_app_color.dart';
 
 class MyAppStyle {
-  static TextStyle drawerTextColor = TextStyle(
+  static TextStyle deActivedrawerTextColor = TextStyle(
     color: Colors.grey[600],
+  );
+  static TextStyle sctivedrawerTextColor = TextStyle(
+    color: MyAppColors.PrimaryColor,
   );
 
   static const TextStyle buttonTextStyle = TextStyle(

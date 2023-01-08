@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../business_logic/counter_getx_controller.dart';
+import '../../business_logic/details_page_controller.dart';
 import '../../data/models/food_item.dart';
 import '../../data/services/food_services.dart';
 import '../../utility/my_app_color.dart';
@@ -12,12 +13,17 @@ import '../widgets/counter.dart';
 
 class FoodDetailsMobilePage extends StatelessWidget {
   final FoodItem foodItem;
-
-  FoodDetailsMobilePage({Key? key, required this.foodItem}) : super(key: key);
-  CounterController counterController = Get.find();
+  final String previousRouteName;
+  FoodDetailsMobilePage({
+    Key? key,
+    required this.foodItem,
+    required this.previousRouteName,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    CounterController counterController = Get.find<CounterController>();
+
     return Scaffold(
       body: Container(
         margin: EdgeInsets.all(15),

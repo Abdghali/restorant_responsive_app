@@ -26,6 +26,7 @@ class FavouriteRowItem extends StatelessWidget {
         Get.to(
           FoodDetailsPage(
             foodItem: foodItem,
+            previousRouteName: Get.currentRoute,
           ),
         );
       },

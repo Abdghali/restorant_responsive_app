@@ -32,6 +32,14 @@ class FoodItemsRepository {
     await foodItemServices.deleteFoodItemFromFavorite(id);
   }
 
+  updateFoodItemToFavorite(FoodItem foodItem) async {
+    await foodItemServices.updateFavoriteFoodItem(foodItem);
+  }
+
+  updateFoodItemToCart(FoodItem foodItem) async {
+    await foodItemServices.updateCartFoodItem(foodItem);
+  }
+
   // checkIfFoodItemFounded(){
   //  return  await foodItemServices.checkIfFoodItemFounded();
   // }

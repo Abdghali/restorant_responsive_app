@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:restaurant_app/presentation/cart_pages/cart_page.dart';
 import 'package:restaurant_app/presentation/home/home_page.dart';
 
@@ -66,62 +67,3 @@ var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
 
 ///-- end Pading
 
-/// my drawer
-var myDrawer = Drawer(
-  backgroundColor: Colors.grey[300],
-  elevation: 0,
-  child: Column(
-    children: [
-      DrawerHeader(
-        child: Icon(
-          Icons.favorite,
-          size: 64,
-        ),
-      ),
-      Padding(
-        padding: tilePadding,
-        child: ListTile(
-          leading: Icon(
-            Icons.home,
-            color: MyAppColors.PrimaryColor,
-          ),
-          onTap: (() {
-            Get.to(HomePage());
-          }),
-          title: Text(
-            'home'.tr,
-            style: MyAppStyle.drawerTextColor,
-          ),
-        ),
-      ),
-      Padding(
-        padding: tilePadding,
-        child: ListTile(
-          leading: Icon(
-            Icons.favorite,
-            color: MyAppColors.PrimaryColor,
-          ),
-          onTap: (() => Get.to(FavouritePage())),
-          title: Text(
-            'favorite'.tr,
-            style: MyAppStyle.drawerTextColor,
-          ),
-        ),
-      ),
-      Padding(
-        padding: tilePadding,
-        child: ListTile(
-          leading: Icon(
-            Icons.shopping_cart,
-            color: MyAppColors.PrimaryColor,
-          ),
-          onTap: (() => Get.to(CartPage())),
-          title: Text(
-            'cart'.tr,
-            style: MyAppStyle.drawerTextColor,
-          ),
-        ),
-      ),
-    ],
-  ),
-);

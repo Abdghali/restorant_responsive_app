@@ -24,6 +24,7 @@ class CartItem extends StatelessWidget {
         Get.to(
           FoodDetailsPage(
             foodItem: foodItem,
+            previousRouteName: Get.currentRoute,
           ),
         );
       },

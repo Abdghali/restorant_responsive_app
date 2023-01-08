@@ -13,6 +13,10 @@ class CartPageController extends BaseController {
 
   RxList<FoodItem> listOfCartFoodItems = <FoodItem>[].obs;
 
+  RxDouble subTotalPrice =
+      0.0.obs; // sub total price for all food item in the cart
+  RxDouble totalPrice = 0.0.obs; //  total price for all food item in the cart
+
   /// get List of foodItem
   getAllCartFoodItem() async {
     loading.value = true;
@@ -31,9 +35,9 @@ class CartPageController extends BaseController {
     await getAllCartFoodItem(); // update  cart food item list
   }
 
-  RxDouble subTotalPrice =
-      0.0.obs; // sub total price for all food item in the cart
-  RxDouble totalPrice = 0.0.obs; //  total price for all food item in the cart
+  updateFoodItemToCart(FoodItem foodItem) async {
+    await foodItemsRepository.updateFoodItemToCart(foodItem);
+  }
 
 // calculate total price
   calculatePrice() {

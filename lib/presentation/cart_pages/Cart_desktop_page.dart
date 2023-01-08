@@ -10,6 +10,7 @@ import '../../utility/my_app_color.dart';
 import '../address_pages/address_page.dart';
 import '../widgets/empty_list.dart';
 import '../widgets/image_container.dart';
+import '../widgets/my_drawer_widget.dart';
 import '../widgets/slider.dart';
 import 'widgets/cart_Item.dart';
 import '../widgets/my_tile.dart';
@@ -30,7 +31,7 @@ class CartDesktopPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // open drawer
-            myDrawer,
+            MyDrawerWidget(),
 
             // first half of page
             Expanded(

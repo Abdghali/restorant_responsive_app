@@ -9,6 +9,7 @@ import '../../utility/constants.dart';
 import '../../utility/my_app_color.dart';
 import '../address_pages/address_page.dart';
 import '../widgets/empty_list.dart';
+import '../widgets/my_drawer_widget.dart';
 import '../widgets/my_tile.dart';
 
 class CartTabletPage extends StatelessWidget {
@@ -21,7 +22,7 @@ class CartTabletPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyAppColors.backgroundColor,
       appBar: myAppBar,
-      drawer: myDrawer,
+      drawer: MyDrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

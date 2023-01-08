@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../business_logic/counter_getx_controller.dart';
+import '../../business_logic/details_page_controller.dart';
 import '../../data/models/food_item.dart';
 import '../../data/services/food_services.dart';
 import '../../utility/my_app_color.dart';
@@ -12,8 +13,13 @@ import '../widgets/counter.dart';
 
 class FoodDetailsTabletPage extends StatelessWidget {
   final FoodItem foodItem;
+  final String previousRouteName;
 
-  FoodDetailsTabletPage({Key? key, required this.foodItem}) : super(key: key);
+  FoodDetailsTabletPage({
+    Key? key,
+    required this.foodItem,
+    required this.previousRouteName,
+  }) : super(key: key);
   CounterController counterController = Get.find();
 
   @override
