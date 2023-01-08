@@ -28,6 +28,7 @@ class CartPageController extends BaseController {
 
   setFoodItemtoCart(FoodItem foodItem) async {
     await foodItemsRepository.setFoodItemtoCart(foodItem);
+    await getAllCartFoodItem();
   }
 
   deleteFoodItemFromCart(int id) async {
@@ -37,13 +38,15 @@ class CartPageController extends BaseController {
 
   updateFoodItemToCart(FoodItem foodItem) async {
     await foodItemsRepository.updateFoodItemToCart(foodItem);
+    await getAllCartFoodItem();
   }
 
 // calculate total price
   calculatePrice() {
     subTotalPrice.value = 0.0;
     listOfCartFoodItems.value.forEach((foodItem) {
-      subTotalPrice.value += (foodItem.price ?? 1 * foodItem.quantity! ?? 1);
+      double price = foodItem.quantity! * foodItem.price!;
+      subTotalPrice.value += price;
     });
     totalPrice.value = subTotalPrice.value + tax;
   }

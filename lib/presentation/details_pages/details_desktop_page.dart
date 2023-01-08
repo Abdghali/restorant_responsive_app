@@ -35,6 +35,7 @@ class FoodDetailsDesktopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    counterController.counter.value = foodItem.quantity ?? 0;
     return Scaffold(
         body: Obx(() => Container(
               child: Row(
@@ -91,7 +92,7 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                                 SizedBox(
                                   height: 30.h,
                                 ),
-                                AutoSizeText("food_name".tr,
+                                AutoSizeText(foodItem.name!,
                                     style: MyAppStyle.boldTitleTextStyle
                                         .copyWith(fontWeight: FontWeight.w800)),
                                 SizedBox(
@@ -122,15 +123,8 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                       children: [
                         OutlinedButton.icon(
                           onPressed: () async {
-                            foodItem.quantity = counterController
-                                .counter.value; // update the quantity
-                            !detailsPageController.isCartItem.value
-                                ? await cartPageController
-                                    .setFoodItemtoCart(foodItem)
-                                : await cartPageController
-                                    .updateFoodItemToCart(foodItem);
-
-                            detailsPageController.isCartItem.value = true;
+                            detailsPageController
+                                .setCartItem(counterController.counter.value);
                             Logger().e(previousRouteName);
                           },
                           icon: const Icon(
@@ -161,12 +155,8 @@ class FoodDetailsDesktopPage extends StatelessWidget {
                                 width: 1, color: MyAppColors.PrimaryColor),
                           ),
                           onPressed: () async {
-                            !detailsPageController.isFavoriteItem.value
-                                ? await favoritePageController
-                                    .setFoodItemToFavorite(foodItem)
-                                : favoritePageController
-                                    .updateFoodItemToFavorite(foodItem);
-                            detailsPageController.isFavoriteItem.value = true;
+                            detailsPageController.setFavoriteItem(
+                                counterController.counter.value);
                           },
                           icon: const Icon(
                             Icons.favorite_border_outlined,

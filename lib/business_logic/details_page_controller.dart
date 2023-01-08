@@ -22,32 +22,27 @@ class DetailsPageController extends GetxController {
     Logger().e("Logger food item ${myFoodItem.toJson()}");
   }
 
-  // CounterController counterController = Get.find();
-//   addToCart(FoodItem foodItem) async {
-//     await cartPageController.setFoodItemtoCart(foodItem);
-//   }
+  setCartItem(int quantity) async {
+    myFoodItem.value.quantity = quantity;
+    // update the quantity
+    !isCartItem.value
+        ? await cartPageController.setFoodItemtoCart(myFoodItem.value)
+        : await cartPageController.updateFoodItemToCart(myFoodItem.value);
 
-//   updateCartItem(FoodItem foodItem) async {
-//     await cartPageController.updateFoodItemToCart(foodItem);
-//   }
+    isCartItem.value = true;
+    cartPageController.getAllCartFoodItem();
+  }
 
-//   addToFavorite(FoodItem foodItem) async {
-//     await favoritePageController.setFoodItemToFavorite(foodItem);
-//   }
+  setFavoriteItem(int quantity) async {
+    myFoodItem.value.quantity = quantity;
 
-//   updateFavoriteItem(FoodItem foodItem) async {
-//     await favoritePageController.updateFoodItemToFavorite(foodItem);
-//   }
-
-// //check if item in cart list
-//   checkIsFavoriteItem() {
-//     Logger().e(isFavoriteItem.value);
-//   }
-
-// // check if item in Favorite list
-//   checkIsCartItem() {
-//     Logger().e(cartPageController.listOfCartFoodItems.length);
-//   }
+    !isFavoriteItem.value
+        ? await favoritePageController.setFoodItemToFavorite(myFoodItem.value)
+        : await favoritePageController
+            .updateFoodItemToFavorite(myFoodItem.value);
+    isFavoriteItem.value = true;
+    favoritePageController.getAllFavoriteFoodItem();
+  }
 
   checkOsFavorite() {
     favoritePageController.listOfFavoriteFoodItem.forEach((element) {
